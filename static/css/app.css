@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'charliezonk';
+  src: url('../font/CharlieZonk-wamP.ttf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+.navbar-brand {
+  font-family: 'charliezonk', cursive;
+  letter-spacing: 6px;
+}
+

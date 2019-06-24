@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'charliezonk';
+    src: url('../font/CharlieZonk-wamP.ttf');
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+
+body{
+    background-image: url(../img/dark-honeycomb.png)
+}
+.logo{
+    font-family: 'charliezonk',cursive
+}
+.logo a{
+    color:rgba(244, 244, 244, 0.8)
+}
+.logo:hover,.logo:active{
+    text-decoration: none
+}

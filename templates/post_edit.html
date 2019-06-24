@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Edit post
+{% endblock %}
+
+{% load static %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/simplemde.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/simplemde.min.js' %}"></script>
+<script>
+    var simplemde = new SimpleMDE({
+        // element: document.getElementById("demo"),
+        autoDownloadFontAwesome: false,
+        placeholder: "Type here...",
+    })
+</script>
+{% endblock %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item">
+    <a href="{% url 'home' %}">Boards</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="{% url 'board_topics' post.topic.board.pk %}">{{ post.topic.board.name }}</a>
+  </li>
+  <li class="breadcrumb-item">
+      <a href="{% url 'topic_posts' post.topic.board.pk post.topic.pk %}">{{post.topic.subject}}</a>
+  </li>
+  <li class="breadcrumb-item active">
+      Edit Post
+  </li>
+    
+{% endblock %}
+
+{% block content %}
+    <form novalidate method="POST" class="mb-4">
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <button class="btn btn-success" type="submit">Save changes</button>
+      <a href="{% url 'topic_posts' post.topic.board.pk post.topic.pk %}" 
+      class="btn btn-outline-secondary" role="button">
+          Cancel
+      </a>
+    </form>
+{% endblock %}
