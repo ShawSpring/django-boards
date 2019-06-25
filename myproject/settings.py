@@ -146,4 +146,25 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'login'
 
-EMAIL_BACKEND=	'django.core.mail.backends.console.EmailBackend'
+
+# 配置邮箱发邮件的相关功能
+ 
+# 参见 https://simpleisbetterthancomplex.com/series/2017/10/16/a-complete-beginners-guide-to-django-part-7.html#configuring-an-email-service
+#这一项是固定的
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# smtp服务的邮箱服务器 我用的是163
+EMAIL_HOST = 'smtp.163.com'
+# smtp服务固定的端口是25
+EMAIL_PORT = 25
+
+#发送邮件的邮箱
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+#在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+
+
+EMAIL_SUBJECT_PREFIX = '[Django Boards]'
+
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
